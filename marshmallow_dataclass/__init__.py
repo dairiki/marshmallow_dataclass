@@ -805,7 +805,7 @@ def field_for_schema(  # noqa: C901 (FIXME)
         )
 
     # enumerations
-    if issubclass(typ, Enum):
+    if isinstance(typ, type) and issubclass(typ, Enum):
         try:
             return marshmallow.fields.Enum(typ, **metadata)
         except AttributeError:
