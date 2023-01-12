@@ -462,11 +462,11 @@ class TestClassSchema(unittest.TestCase):
 
         @dataclasses.dataclass
         class Nested:
+            y: BB[AA]
             x: BB[float]
             z: BB[float]
             # if y is the first field in this class, deserialisation will fail.
             # see https://github.com/lovasoa/marshmallow_dataclass/pull/172#issuecomment-1334024027
-            y: BB[AA]
 
         schema_nested = class_schema(Nested)()
         self.assertEqual(
